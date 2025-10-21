@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrine de Produtos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-size: 1.1em;
+        }
+
+        .error {
+            color: red;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            background-color: #ffdddd;
+            border: 1px solid red;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Table */
+        @media screen and (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                border: 1px solid #ccc;
+                margin-bottom: 10px;
+            }
+
+            td {
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+
+            td:before {
+                position: absolute;
+                top: 12px;
+                left: 12px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+            }
+
+            td:nth-of-type(1):before { content: "ID"; }
+            td:nth-of-type(2):before { content: "Nome"; }
+            td:nth-of-type(3):before { content: "Descrição"; }
+            td:nth-of-type(4):before { content: "Preço"; }
+            td:nth-of-type(5):before { content: "Estoque"; }
+            td:nth-of-type(6):before { content: "Ações"; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Bem-vindo à nossa Loja!</h1>
+
+        <div th:if="${erro}" class="error">
+            <p th:text="${erro}"></p>
+        </div>
+
+        <h2>Produtos Disponíveis</h2>
+        <div th:if="${produtos.isEmpty()} and ${erro == null}">
+            <p>Nenhum produto encontrado no momento.</p>
+        </div>
+
+        <table th:if="${!produtos.isEmpty()}">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Estoque</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="produto : ${produtos}">
+                    <td data-label="ID" th:text="${produto.id}">1</td>
+                    <td data-label="Nome" th:text="${produto.nome}">Nome do Produto</td>
+                    <td data-label="Descrição" th:text="${produto.descricao}">Descrição do Produto</td>
+                    <td data-label="Preço" th:text="${'R$ ' + #numbers.formatDecimal(produto.preco, 1, 'POINT', 2, 'COMMA')}">R$ 99,99</td>
+                    <td data-label="Estoque" th:text="${produto.quantidadeEmEstoque}">10</td>
+                    <td data-label="Ações">
+                        <a th:href="@{/produto/{id}(id=${produto.id})}">Ver Detalhes</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

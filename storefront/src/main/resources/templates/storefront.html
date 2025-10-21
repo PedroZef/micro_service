@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Warehouse Storefront</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h1>Warehouse Storefront</h1>
+
+    <h2>Adicionar Produtos</h2>
+    <form action="#" th:action="@{/storefront}" th:object="${newProduct}" method="post">
+        <p>Nome: <input type="text" th:field="*{nome}" /></p>
+        <p>Descricao: <input type="text" th:field="*{descricao}" /></p>
+        <p>Preço: <input type="text" th:field="*{preco}" /></p>
+        <p>Quantidade: <input type="text" th:field="*{quantidadeEmEstoque}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+
+    <h2>Lista de Produtos</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.nome}"></td>
+                <td th:text="${product.descricao}"></td>
+                <td th:text="${product.preco}"></td>
+                <td th:text="${product.quantidadeEmEstoque}"></td>
+                <td>
+                    <a th:href="@{/storefront/edit/{id}(id=${product.id})}">Edit</a>
+                    <a th:href="@{/storefront/delete/{id}(id=${product.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

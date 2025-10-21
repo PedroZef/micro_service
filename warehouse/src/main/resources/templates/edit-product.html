@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Editar Produto</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h1>Editar Produto</h1>
+    <form action="#" th:action="@{/storefront/update/{id}(id=${product.id})}" th:object="${product}" method="post">
+        <p>Nome: <input type="text" th:field="*{nome}" /></p>
+        <p>Descrição: <input type="text" th:field="*{descricao}" /></p>
+        <p>Preço: <input type="text" th:field="*{preco}" /></p>
+        <p>Quantidade: <input type="text" th:field="*{quantidadeEmEstoque}" /></p>
+        <p><input type="submit" value="Update" /> <a href="/storefront">Cancel</a></p>
+    </form>
+</body>
+
+</html>
