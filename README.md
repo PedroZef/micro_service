@@ -92,4 +92,10 @@ Essa arquitetura desacoplada permite que cada serviço seja desenvolvido, implan
 
 ---
 
-## Documentação e Integração
+## Links Úteis
+
+[https://onlinecurriculo.com.br/r/ymyltlHY2](https://onlinecurriculo.com.br/r/ymyltlHY2)
+
+[https://github.com/PedroZef]
+
+---
