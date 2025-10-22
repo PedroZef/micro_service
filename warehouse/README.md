@@ -46,7 +46,7 @@ Siga os passos abaixo para executar a aplicação em seu ambiente local.
 
     -   No Windows (usando Command Prompt ou PowerShell):
         ```bash
-        .\gradlew.bat bootRun
+        gradlew.bat bootRun
         ```
     -   No Linux ou macOS:
         ```bash
