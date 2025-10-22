@@ -22,11 +22,13 @@ O `warehouse` é o coração do sistema, atuando como o único ponto de verdade 
 ### Como Executar
 
 1.  **Navegue até a pasta do `warehouse`**:
+
     ```bash
     cd warehouse
     ```
 
 2.  **Execute a aplicação com o Gradle**:
+
     -   No Windows:
         ```bash
         gradlew.bat bootRun
@@ -59,11 +61,13 @@ O `storefront` é a camada de apresentação, responsável por exibir os produto
 1.  **Certifique-se de que o `warehouse` está em execução.**
 
 2.  **Navegue até a pasta do `storefront`**:
+
     ```bash
     cd storefront
     ```
 
 3.  **Execute a aplicação com o Gradle**:
+
     -   No Windows:
         ```bash
         gradlew.bat bootRun
@@ -84,4 +88,8 @@ O `storefront` é a camada de apresentação, responsável por exibir os produto
 2.  Quando um usuário acessa a página do `storefront`, ele envia uma requisição para o `warehouse` para obter a lista de produtos.
 3.  O `warehouse` responde com os dados, e o `storefront` os renderiza em uma página web.
 
-Essa arquitetura desacoplada permite que cada serviço seja desenvolvido, implantado e escalado de forma independente.
+Essa arquitetura desacoplada permite que cada serviço seja desenvolvido, implantado e escalado de forma independente e com facilidade.
+
+---
+
+## Documentação e Integração
